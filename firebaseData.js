@@ -89,7 +89,11 @@ export default function AddToFire() {
 }
 
 
+
 //Input Field Dev World
+
+
+
 <Fragment>
       <h1>Schools (SNAPSHOT)</h1>
       <div className="inputBox">
