@@ -1,3 +1,5 @@
+//Noob Way
+
 import { useFormik } from "formik";
 import React, { useState } from "react";
 
@@ -80,3 +82,64 @@ function FormikPracOne() {
 }
 
 export default FormikPracOne;
+
+//Pro Way
+
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import React, { useState } from "react";
+
+function FormikPracTwo() {
+  const initialValues = {
+    name: "",
+    email: "",
+    channel: "",
+  };
+
+  const onSubmit = (values) => {
+    console.log("Form Data: ", values);
+  };
+
+  const validate = (values) => {
+    let error = {};
+    if (!values.name) {
+      error.name = "Required!!";
+    }
+    if (!values.email) {
+      error.email = "Required!!";
+    }
+    if (!values.channel) {
+      error.channel = "Required!!";
+    }
+    return error;
+  };
+
+  return (
+    <Formik
+      initialValues={initialValues}
+      validate={validate}
+      onSubmit={onSubmit}
+    >
+      <Form>
+        <div className="form-control">
+          <label htmlFor="name">Name</label>
+          <Field type="text" id="name" name="name" />
+          <ErrorMessage name="name" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="email">E-mail</label>
+          <Field type="email" id="email" name="email" />
+          <ErrorMessage name="email" />
+        </div>
+        <div className="form-control">
+          <label htmlFor="channel">Channel</label>
+          <Field type="text" id="channel" name="channel" />
+          <ErrorMessage name="channel" />
+          <button type="submit">Submit</button>
+        </div>
+      </Form>
+    </Formik>
+  );
+}
+
+export default FormikPracTwo;
+
