@@ -88,6 +88,7 @@ export default FormikPracOne;
 
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import React, { useState } from "react";
+import * as Yup from 'yup' //npm add yup
 
 function FormikPracTwo() {
   const initialValues = {
@@ -113,12 +114,22 @@ function FormikPracTwo() {
     }
     return error;
   };
+  
+//   const validationSchema = Yup.object({
+//   name: Yup.string().required('Required'),
+//   email: Yup.string()
+//     .email('Invalid email format')
+//     .required('Required'),
+//   channel: Yup.string().required('Required')
+// })
+  
 
   return (
     <Formik
       initialValues={initialValues}
       validate={validate}
       onSubmit={onSubmit}
+      validationSchema={validationSchema}
     >
       <Form>
         <div className="form-control">
