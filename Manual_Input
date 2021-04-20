@@ -1,0 +1,71 @@
+function TestInput() {
+  const [user, setUser] = useState({
+    name: "",
+    proffesion: "",
+    mail: "",
+    pass: "",
+  });
+
+  const [member, setMember] = useState([]);
+  const handleChange = (e) => {
+    var name = e.target.name;
+    var value = e.target.value;
+    setUser({ ...user, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setMember([...member, user]);
+    setUser({
+      name: "",
+      proffesion: "",
+      mail: "",
+      pass: "",
+    });
+  };
+
+  console.log(user);
+
+  return (
+    <div>
+      {member.map((per) => (
+        <>
+          <h3>Name: {per.name}</h3>
+          <h3>Profession: {per.proffesion}</h3>
+          <h3>E-mail:{per.mail}</h3>
+        </>
+      ))}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          name="name"
+          value={user.name}
+          onChange={handleChange}
+        />
+        <br /> <br />
+        <input
+          type="text"
+          name="proffesion"
+          value={user.proffesion}
+          onChange={handleChange}
+        />
+        <br /> <br />
+        <input
+          type="email"
+          name="mail"
+          value={user.mail}
+          onChange={handleChange}
+        />
+        <br /> <br />
+        <input
+          type="password"
+          name="pass"
+          value={user.pass}
+          onChange={handleChange}
+        />
+        <br /> <br />
+        <input type="submit" />
+      </form>
+    </div>
+  );
+}
