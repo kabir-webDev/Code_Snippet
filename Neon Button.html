@@ -1,0 +1,67 @@
+------------------------HTML------------------------
+<body>
+  <a href="#">
+  <span class="span-1"></span>
+  <span class="span-2"></span>
+  <span class="span-3"></span>
+  <span class="span-4"></span>
+  Registration
+</a>
+</body>
+
+------------------------CSS------------------------
+
+body{
+  margin:0;
+  padding:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  min-height:100vh;
+  background-color: #031321;
+  font-family:consolas;
+}
+a{
+  border-radius: 10px;
+  position: relative;
+  display: inline-block;
+  padding: 15px 30px;
+  color: #2196f3;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 1px;
+  transition: 0.2s;
+  overflow:hidden;
+  transition-delay:1s;
+}
+a:hover{
+  color: #255784;
+  background-color: #2196f3;
+  box-shadow: 0 0 10px #2196f3, 0 0 40px #2196f3, 0 0 80px #2196f3,0 0 100px #2196f3;
+}
+a span{
+  display:block;
+  position:absolute;
+}
+a .span-1{
+  width: 100%;
+  height:3px;
+  top:0;
+  left:-100%;
+  background-image: linear-gradient(90deg,#66fd78,#2196f3);
+  transition: 1s;
+}
+a:hover .span-1{
+  left:100%;
+}
+a .span-2{
+  width: 100%;
+  height:3px;
+  bottom:0;
+  right:-100%;
+  background-image: linear-gradient(270deg,#66fd78,#2196f3);
+  transition: 1s;
+}
+a:hover .span-2{
+  right:100%;
+}
