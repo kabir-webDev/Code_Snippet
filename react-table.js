@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import { db } from "../../../config/firebaseConfig";
 import MaterialTable from "material-table";
 
 function PermanentDrawerLeft() {
+  const [user, setUser] = useState([]);
   const [data, setData] = useState([]);
   const columns = [
     { title: "ID", field: "id" },
@@ -11,6 +13,24 @@ function PermanentDrawerLeft() {
     { title: "Phone", field: "phone" },
     { title: "Web Link", field: "website" },
   ];
+
+  const ref = db.collection("vax-register");
+
+  function getUsers() {
+    ref.onSnapshot((querySnapshot) => {
+      const items = [];
+      querySnapshot.forEach((doc) => {
+        items.push(doc.data());
+      });
+      setUser(items);
+    });
+  }
+
+  useEffect(() => {
+    getUsers();
+  }, []);
+  console.log(user);
+
   useEffect(() => {
     fetch("https://jsonplaceholder.typicode.com/users")
       .then((resp) => resp.json())
